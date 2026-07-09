@@ -17,7 +17,7 @@ class Player(Base):
     # PostgreSQL에서는 String이 VARCHAR로 매핑된다.
     # 길이를 지정하지 않은 VARCHAR(=길이 무제한)을 정식으로 지원하므로 별도 길이를 주지 않아도 된다.
 
-    Player_id = Column(Integer, primary_key=True, index=True)
+    player_id = Column(Integer, primary_key=True, index=True)
     gsis_id = Column(String, nullable=True) # NFL 공식 선수 id(gsis_id)가 없는 선수도 있다.
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
@@ -39,7 +39,7 @@ class Performance(Base):
     """
     __tablename__ = "performance"
 
-    Performance_id = Column(Integer, primary_key=True, index=True)
+    performance_id = Column(Integer, primary_key=True, index=True)
     week_number = Column(String, nullable=False)
     fantasy_points = Column(Float, nullable=False)
     last_changed_date = Column(Date, nullable=False)
@@ -78,7 +78,7 @@ class Team(Base):
     league = relationship("League", back_populates="teams")
 
     # secondary="team_player" : 아래 TeamPlayer 연결 테이블을 중간에 두고 조인
-    players = relationship("Player", secondary="team_player", back_populates="team")
+    players = relationship("Player", secondary="team_player", back_populates="teams")
     
 class TeamPlayer(Base):
     """

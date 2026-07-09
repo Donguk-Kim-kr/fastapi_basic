@@ -29,30 +29,22 @@ def db_session():
     session.close()
 
 def test_get_player(db_session):
-    """
-    player_id=1001인 선수를 정확히 가져오는지 확인
-    """
+    """player_id=1001인 선수를 정확히 가져오는지 확인 """
     player = crud.get_player(db_session, player_id=1001)
     assert player.player_id == 1001
 
 def test_get_players(db_session):
-    """
-    2024-01-01 이후 변경된 선수 수가 seed 데이터 기준 1018명인지 확인
-    """
+    """2024-01-01 이후 변경된 선수 수가 seed 데이터 기준 1018명인지 확인"""
     players = crud.get_players(db_session, skip=0, limit=10000, min_last_changed_date=test_date)
     assert len(players) == 1018
 
 def test_get_all_performances(db_session):
-    """
-    전체 성적 기록 수가 17306건인지 확인
-    """
+    """전체 성적 기록 수가 17306건인지 확인"""
     performances = crud.get_performances(db_session, skip=0, limit=18000)
     assert len(performances) == 17306
 
 def test_get_new_performances(db_session):
-    """
-    2024-04-01 이후 갱신된 성적 기록이 2711건인지 확인
-    """
+    """2024-04-01 이후 갱신된 성적 기록이 2711건인지 확인"""
     performances = crud.get_performances(db_session, skip=0, limit=10000, min_last_changed_date=test_date)
     assert len(performances) == 2711
 
@@ -68,9 +60,7 @@ def test_get_league(db_session):
     assert len(league.teams) == 8
 
 def test_get_leagues(db_session):
-    """
-    전체 리그 수가 5개인지 확인
-    """
+    """전체 리그 수가 5개인지 확인"""
     leagues = crud.get_leagues(db_session, skip=0, limit=10000,
                               min_last_changed_date=test_date)
     assert len(leagues) == 5
@@ -80,39 +70,30 @@ def test_get_teams(db_session):
     teams = crud.get_teams(db_session, skip=0, limit=10000, min_last_changed_date=test_date)
     assert len(teams) == 20
 
+def test_get_teams_for_one_league(db_session):
+    """리그 id가 5001번인지 확인"""
+    teams = crud.get_teams(db_session, league_id=5001)
+    assert len(teams) == 12
+    assert teams[0].league_id == 5001
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+def test_get_team_players(db_session):
+    """팀 기록에서 선수를 조회할 수 있으며 첫 번째 팀에 7명의 선수가 있는 지 확인"""
+    first_team = crud.get_teams(db_session, skip=0, limit=1000,
+                                min_last_changed_date=test_date)[0]
+    assert len(first_team.players) == 7
 
 # 분석 쿼리 (단순 카운트)
-def get_player_count(db: Session):
+def test_get_player_count(db_session):
     """전체 선수 수를 센다."""
-    query = db.query(models.Player)
-    return query.count()
+    player_count = crud.get_player_count(db_session)
+    assert player_count == 1018
 
-def get_team_count(db: Session):
+def test_get_team_count(db_session):
     """전체 팀 수를 센다."""
-    query = db.query(models.Team)
-    return query.count()
+    team_count = crud.get_team_count(db_session)
+    assert team_count == 20
 
-def get_league_count(db: Session):
+def test_get_league_count(db_session):
     """전체 리그 수를 센다."""
-    query = db.query(models.League)
-    return query.count()
+    league_count = crud.get_league_count(db_session)
+    assert league_count == 5
