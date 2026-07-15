@@ -9,6 +9,7 @@ wheels/
 # Virtual environments
 .venv
 .env
+**/.env
 
-2026_07_02/file/
-2026_07_07/file/
+bus_api/file/
+busapidb/file/
