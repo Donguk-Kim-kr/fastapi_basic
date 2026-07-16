@@ -1,7 +1,7 @@
 # ======================================================================================================
-# 2026_07_08/seed_postgres_basic.py
+# SQLAlchemy_2.0_football/seed_postgres_basic.py
 #
-# 2026_07_08/data/ 내부의 csv 파일 5개를 PostgreSQL 데이터베이스에 적재하는 초기화 스크립트
+# SQLAlchemy_2.0_football/data/ 내부의 csv 파일 5개를 PostgreSQL 데이터베이스에 적재하는 초기화 스크립트
 #
 #     test_crud.py는 csv 파일을 직접 읽지 않는다.
 #     PostgreSQL DB에 이미 들어있는 데이터를 조회해서 테스트한다.
@@ -21,7 +21,7 @@ from sqlalchemy.orm import Session
 from database import Base, engine
 import models
 
-# 현재 파일이 들어있는 2026_07_08 폴더의 절대 경로
+# 현재 파일이 들어있는 SQLAlchemy_2.0_football 폴더의 절대 경로
 #     (어느 위치에서 실행하더라도 data 폴더를 안정적으로 찾기 위해 사용한다.)
 BASE_DIR = Path(__file__).resolve().parent
 
