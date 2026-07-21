@@ -4,7 +4,7 @@
 # ===========================================================================
 from sqlalchemy import create_engine, text
 
-from config import BUS_DB_ULR, SUBWAY_DB_URL
+from config import BUS_DB_URL, SUBWAY_DB_URL
 
 # ----------------------------------------------------------------------------
 # DB Engine 생성
@@ -13,7 +13,7 @@ from config import BUS_DB_ULR, SUBWAY_DB_URL
 # future=true : SQLAlchemy 2.0 스타일 API를 사용하겠다는 의미
 # ----------------------------------------------------------------------------
 subway_engine = create_engine(SUBWAY_DB_URL, echo=False, future=True) # 지하철
-bus_engine = create_engine(BUS_DB_ULR, echo=False, future=True)
+bus_engine = create_engine(BUS_DB_URL, echo=False, future=True)
 
 def table_count(engine, table_name: str) -> int:
     """

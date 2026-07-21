@@ -18,7 +18,7 @@ SUBWAY_DB_URL = os.getenv(
     "postgresql://postgres:1234@localhost:5432/subwaydb",
 )
 
-BUS_DB_ULR = os.getenv(
+BUS_DB_URL = os.getenv(
     "BUS_DB_URL",
     "postgresql://postgres:1234@localhost:5432/busapidb",
 )
