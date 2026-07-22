@@ -46,13 +46,13 @@ if name:
                     unsafe_allow_html=True)
 
     with col2:
-        st.write(f'**이름:** {name}')
-        st.write(f'**경력 연차:** {years}년')
+        st.write(f'**이름 :** {name}')
+        st.write(f'**경력 연차 :** {years}년')
 
         if skills: # ', '.join(skills) --> python, SQL, html, 
-            st.write('**관심 기술:**', ', '.join(skills))
+            st.write('**관심 기술 :**', ', '.join(skills))
         else:
-            st.write('**관심 기술:** 선택된 항목 없음')
+            st.write('**관심 기술 :** 선택된 항목 없음')
 
 else:
     st.info('이름을 입력하면 카드가 생성됩니다.')
