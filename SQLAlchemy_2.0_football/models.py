@@ -85,8 +85,8 @@ class Player(Base):
 
     # --------------------------------------------------------------------------------
     # association_proxy
-    #     team_players는 TeamPlayer(연결 기록) 객체의 리스트라서 "이 선수가 속한 팀 이름들만"
-    #     "보고 싶다" --> player.team_players[0].team.team_name ??? 너무 길다 ㅠㅠ
+    #     team_players는 TeamPlayer(연결 기록) 객체의 리스트라서 "이 선수가 속한 팀 이름들만
+    #     보고 싶다" --> player.team_players[0].team.team_name
     #
     # association_proxy('team_players', 'team') 
     #     예전처럼 player.teams 라고만 써도 Team 객체 리스트를 바로 꺼내볼 수 있게 해주는
