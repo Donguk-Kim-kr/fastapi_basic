@@ -10,12 +10,12 @@
 #     PATCH  /todos/{todo_id}  --> 할 일 수정
 #     DELETE /todos/{todo_id}  --> 할 일 삭제
 # ====================================================================
-from schema.response import TodoResponse
-from schema.request import TodoCreateRequest, TodoUpdateRequest
+from todo.schema.response import TodoResponse
+from todo.schema.request import TodoCreateRequest, TodoUpdateRequest
 from fastapi import FastAPI, status, HTTPException
 from sqlalchemy import select # ORM 모델을 기준으로 조회 쿼리 객체를 생성
-from database.db_connection import engine, SesstionFactory
-from database.orm import Base
+from todo.database.db_connection import engine, SesstionFactory
+from todo.database.orm import Base
 from models import Todo
 
 # 앱 시작 시 테이블 자동 생성
