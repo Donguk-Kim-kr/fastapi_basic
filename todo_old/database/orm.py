@@ -8,7 +8,5 @@
 # ====================================================================
 from sqlalchemy.orm import DeclarativeBase
 
-# Base 클래스 : 이 클래스를 상속받는 모든 클래스는 데이터베이스 테이블로 취급한다는 기준점 역할
-
 class Base(DeclarativeBase):
     pass
