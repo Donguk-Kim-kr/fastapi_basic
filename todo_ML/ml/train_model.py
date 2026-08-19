@@ -130,15 +130,14 @@ def main():
         json.dumps(metadata, ensure_ascii=False, indent=2), encoding='utf-8'
     )
 
-    # main.py의 lifespan은 항상 "latest.pkl"이라는 고정된 이름만 찾는다.
-    # 버전이 올라갈 때마다 main.py 코드를 수정할 필요없이, 이 파일 하나만 최신 모델로 업데이트하면
+    # main.py의 lifespan은 항상 'latest.pkl'이라는 고정된 이름만 찾는다.
+    # 버전이 올라갈때마다 main.py 코드를 수정할 필요없이, 이 파일 하나만 최신모델로 덮어쓰기하면
     # 서버가 자동으로 최신 버전을 로드하게 된다.
-    latest_path = ARTIFACTS_DIR / "latest.pkl"
+    latest_path = ARTIFACTS_DIR / 'latest.pkl'
     joblib.dump(pipeline, latest_path)
 
-    print(f"[INFO] 모델 저장 완료 : {model_path.name} (버전 {version})")
-    print(f"[INFO] latest.pkl 갱신 완료 (FastAPI가 여기서 로드함)")
-
+    print(f'[INFO] 모델 저장 완료: {model_path.name} (버전 {version})')
+    print(f'[INFO] latest.pkl 갱신 완료 (FastAPI가 여기서 로드함)')
 
 
 
