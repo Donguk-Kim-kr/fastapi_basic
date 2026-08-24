@@ -1,13 +1,13 @@
-"""
-HOME_LIVE/database.py
--------------------
+'''
+home_library_v0 / database.py
+-----------------------------
 예광탄 방식을 활용한 아주 얇은 코드
 DB 연결 - postgreSQL
-"""
+'''
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
-DATABASE_URL = "postgresql+psycopg2://postgre:1234@localhost:5432/study"
+DATABASE_URL = 'postgresql+psycopg2://postgres:1234@localhost:5432/home_library_v0'
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine)
