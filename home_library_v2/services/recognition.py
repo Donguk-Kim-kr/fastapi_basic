@@ -120,7 +120,7 @@ def lookup_metadata(isbn: str) -> dict | None:
         return None
 
     return {
-        'isbn': isbn,  # 입력받아 조회에 사용한 단일 ISBN
+        'isbn': item.get('isbn', isbn),
         'title': title,
         'author': clean_author(item.get('authorInfo')),
         'publisher': clean_publisher(item.get('pubInfo')),
