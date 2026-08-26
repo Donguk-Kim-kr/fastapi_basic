@@ -82,7 +82,7 @@ def register_book(isbn: str=Form(...), image: UploadFile=File(...), db: Session=
     if not validated_isbn:
         raise HTTPException(422, '유효한 ISBN 형식이 아닙니다.')
 
-    existing_book = db.scaler(select(Book).where(Book.isbn == validated_isbn)) # 중복 확인
+    existing_book = db.scalar(select(Book).where(Book.isbn == validated_isbn)) # 중복 확인
     if existing_book:
         raise HTTPException(status.HTTP_409_CONFLICT, _duplicate_detail(existing_book))
 
@@ -118,7 +118,7 @@ def register_book(isbn: str=Form(...), image: UploadFile=File(...), db: Session=
         status_value = 'confirmed'
     else:
         title = f'수동 등록: ISBN {validated_isbn} (서지정보 조회 실패)'
-        auther = None
+        author = None
         publisher = None
         status_value = 'needs_review'
 

@@ -120,7 +120,7 @@ def lookup_metadata(isbn: str) -> dict | None:
         return None
 
     return {
-        'isbn': item.get('isbn', isbn),
+        'isbn': isbn,
         'title': title,
         'author': clean_author(item.get('authorInfo')),
         'publisher': clean_publisher(item.get('pubInfo')),
